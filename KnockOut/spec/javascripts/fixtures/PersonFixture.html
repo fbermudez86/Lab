@@ -1,0 +1,84 @@
+﻿<div class="container" id="mainContainer" style="padding: 40px 0;">
+
+
+    <div class="row">
+        <div class="span3" style="padding-top: 5em;">
+            <div data-bind="ifnot: PersonData()" id="formContainer">
+
+                <div>
+                    <h4 id="newPerson">Add New Person</h4>
+                </div>
+                <form id="personForm">
+                    <div>
+                        <label for="name">Name</label>
+                        <input id="nameTxt" data-bind="value: model.Name" aria-required="true" title="Name" required="" pattern="[A-Za-z-0-9]+\s[A-Za-z-'0-9]+" type="text"><span style="display: none;" class="validationMessage"></span>
+                    </div>
+
+                    <div>
+                        <label for="category">Email</label>
+                        <input id="emailTxt" data-bind="value: model.Email" aria-required="true" title="Email" required="" type="email"><span style="display: none;" class="validationMessage"></span>
+                    </div>
+
+                    <div>
+                        <label for="price">Phone</label>
+                        <input id="phoneTxt" data-bind="value: model.PhoneNumber" aria-required="true" title="Phone Number" required="" type="text"><span style="display: none;" class="validationMessage"></span>
+                    </div>
+                    <div>
+                        <label for="price">Province</label>
+                        <select id="provinceDdl" data-bind="options: provinces, optionsText: 'Name', value: model.Province, optionsCaption: 'Choose...'" aria-required="true" required="">
+                        </select>
+                        <span style="" class="validationMessage">This field is required.</span>
+                    </div>
+                    <br>
+                    <div>
+                        <button id="createBtn" data-bind="click: create" class="btn-primary">Save</button>
+                        <button id="resetBtn" data-bind="click: reset" class="btn-info">Reset</button>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="span9" id="noUsers" style="padding-top: 5em; display: none;" data-bind="visible: people().length == 0">
+            <h3 class="text-info">No registered users</h3>
+        </div>
+        <div id="usersDiv" class="span9" style="padding-top: 5em;" data-bind="visible: people().length > 0">
+            <table class="table table-striped">
+                <tbody id="usersRows">
+                    <tr>
+                        <td class="span3">
+                            <h5>Name</h5>
+                        </td>
+                        <td class="span2">
+                            <h5>Phone</h5>
+                        </td>
+                        <td class="span2">
+                            <h5>Email</h5>
+                        </td>
+                        <td class="span2">
+                            <h5>Province</h5>
+                        </td>
+                    </tr>
+                    <!-- ko foreach: people() -->
+                    <tr>
+                        <td class="span3">
+                            <span data-bind="text: Name"></span>
+                        </td>
+                        <td class="span2">
+                            <span data-bind="text: PhoneNumber"></span>
+                        </td>
+                        <td class="span2">
+                            <span data-bind="text: Email"></span>
+                        </td>
+                        <td class="span2">
+                            <span data-bind="text: (Province != null) ? Province.Name : ''"></span>
+                        </td>
+                    </tr>
+                    <!-- /ko -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <footer>
+        <script src="/Scripts/ejemplo.js" defer=""></script>
+    </footer>
+</div>

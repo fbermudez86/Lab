@@ -1,0 +1,91 @@
+﻿@{
+    ViewBag.Title = "Knockout";
+    Layout = "~/Views/Shared/_NewLayout.cshtml";
+}
+
+<div id="mainContainer" class="row">
+    <div class="span3" style="padding-top: 5em;">
+        <div data-bind="ifnot: PersonData()">
+
+            <div>
+                <h4 id="newPerson">Add New Person</h4>
+            </div>
+            <form id="personForm">
+                <div>
+                    <label for="name">Name</label>
+                    <input id="nameTxt" data-bind="value: model.Name" aria-required="true" type="text" title="Name" required pattern="[A-Za-z-0-9]+\s[A-Za-z-'0-9]+" />
+                </div>
+
+                <div>
+                    <label for="category">Email</label>
+                    <input id="emailTxt" data-bind="value: model.Email" aria-required="true" type="email" title="Email" required />
+                </div>
+
+                <div>
+                    <label for="price">Phone</label>
+                    <input id="phoneTxt" data-bind="value: model.PhoneNumber" aria-required="true" type="text" title="Phone Number" required />
+                </div>
+                <div>
+                    <label for="price">Province</label>
+                    <select id="provinceDdl" data-bind="options: provinces, optionsText: 'Name', value: model.Province, optionsCaption: 'Choose...'" aria-required="true" required></select>
+                </div>
+                <br />
+                <div>
+                    <button id="createBtn" data-bind="click: create" class="btn-primary" type="submit">Save</button>
+                    <button id="resetBtn" data-bind="click: reset" class="btn-info">Reset</button>
+
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="span9" style="padding-top: 5em;" data-bind="visible: people().length == 0">
+        <h3 class="text-info">No registered users</h3>
+    </div>
+    <div class="span9" style="padding-top: 5em;" data-bind="visible: people().length > 0">
+        <table id="userTable" class="table table-striped">
+            <tr>
+                <td class="span3">
+                    <h5>Name</h5>
+                </td>
+                <td class="span2">
+                    <h5>Phone</h5>
+                </td>
+                <td class="span2">
+                    <h5>Email</h5>
+                </td>
+                <td class="span2">
+                    <h5>Province</h5>
+                </td>
+            </tr>
+            <!-- ko foreach: people() -->
+            <tr>
+                <td class="span3">
+                    <span data-bind="text: Name"></span>
+                </td>
+                <td class="span2">
+                    <span data-bind="text: PhoneNumber"></span>
+                </td>
+                <td class="span2">
+                    <span data-bind="text: Email"></span>
+                </td>
+                <td class="span2">
+                    <span data-bind="text: (Province != null) ? Province.Name : ''"></span>
+                </td>
+            </tr>
+            <!-- /ko -->
+        </table>
+    </div>
+    @*<button><i class="icon-plus"></i></button>*@
+</div>
+<footer>
+    @using System.Web.Optimization
+    @Scripts.RenderFormat("<script src='{0}' defer=\"defer\"></script>", "~/bundles/ejemplo")
+    <script type="text/javascript">
+        $(document).ready(function () {
+            'use strict';
+            var vm = new PersonViewModel();
+            ko.applyBindings(vm, document.getElementById('mainContainer'));
+        });
+    </script>
+</footer>
+
