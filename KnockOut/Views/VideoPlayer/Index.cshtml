@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "JW Player";
+}
+
+<h2>Video Testing</h2>
+<br />
+@*<div class="span6 offset3" id="videoContainer">*@
+<div id="myVideo"></div>
+@*</div>*@
+<footer>
+    @using System.Web.Optimization
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/Scripts/JWPlayer");
+    @*<script type="text/javascript">jwplayer.key = "IiJNDGXTHjrtPsfo76YwQvRBm8EfGaHkLlg6JQ==";</script>*@
+    <script type="text/javascript">
+        var replaycount = 1;
+
+        $(document).ready(function ($) {
+            var w_height = $(window).height();
+            var w_width = $(window).width();
+            jwplayer("myVideo").setup({
+                height: w_height,
+                width: w_width,
+                file: "../../Content/videos/video2.mp4",
+                autostart: true,
+                mute: true,
+                repeat: true,
+                controls: false,
+                stretching: "fill",
+                events: {
+                    onComplete: function () {
+                        if (replaycount == 3) {
+                            jwplayer().autostart = false;
+                            jwplayer().stop();
+                        }
+                        replaycount++;
+                    }
+                }
+            });
+            
+        });
+    </script>
+</footer>

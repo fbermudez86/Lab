@@ -20,6 +20,11 @@ namespace KnockOut
             bundles.Add(new ScriptBundle("~/bundles/ejemplo").Include(
                         "~/Scripts/ejemplo.js"));
 
+            bundles.Add(new ScriptBundle("~/Scripts/JWPlayer").Include(
+                        "~/Scripts/JWPlayer/jwplayer.js"
+                        ,"~/Scripts/JWPlayer/jwplayer.html5.js"
+                ));
+
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.unobtrusive*",
                         "~/Scripts/jquery.validate*"));
