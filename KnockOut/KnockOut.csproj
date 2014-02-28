@@ -182,6 +182,7 @@
     <Compile Include="Models\Person.cs" />
     <Compile Include="Models\Province.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\VideoPlayer\VideoPlayerController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
@@ -247,6 +248,8 @@
     <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="Content\videos\video1.mp4" />
+    <Content Include="Content\videos\video2.mp4" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
@@ -285,6 +288,9 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\JWPlayer\jwplayer.flash.swf" />
+    <Content Include="Scripts\JWPlayer\jwplayer.html5.js" />
+    <Content Include="Scripts\JWPlayer\jwplayer.js" />
     <Content Include="Scripts\knockout-3.0.0.debug.js" />
     <Content Include="Scripts\knockout-3.0.0.js" />
     <Content Include="Scripts\knockout.validation.debug.js" />
@@ -324,6 +330,7 @@
     <Content Include="Views\Home\Example.cshtml" />
     <Content Include="Views\Home\Knockout.cshtml" />
     <Content Include="Views\Jasmine\SpecRunner.cshtml" />
+    <Content Include="Views\VideoPlayer\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
