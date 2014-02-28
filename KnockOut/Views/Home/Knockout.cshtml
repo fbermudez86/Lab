@@ -5,29 +5,28 @@
 
 <div id="mainContainer" class="row">
     <div class="span3" style="padding-top: 5em;">
-        <div data-bind="ifnot: PersonData()">
-
+        <div>
             <div>
                 <h4 id="newPerson">Add New Person</h4>
             </div>
             <form id="personForm">
                 <div>
                     <label for="name">Name</label>
-                    <input id="nameTxt" data-bind="value: model.Name" aria-required="true" type="text" title="Name" required pattern="[A-Za-z-0-9]+\s[A-Za-z-'0-9]+" />
+                    <input id="nameTxt" data-bind="value: person.name" aria-required="true" type="text" title="Name" required pattern="[A-Za-z-0-9]+\s[A-Za-z-'0-9]+" />
                 </div>
 
                 <div>
                     <label for="category">Email</label>
-                    <input id="emailTxt" data-bind="value: model.Email" aria-required="true" type="email" title="Email" required />
+                    <input id="emailTxt" data-bind="value: person.email" aria-required="true" type="email" title="Email" required />
                 </div>
 
                 <div>
                     <label for="price">Phone</label>
-                    <input id="phoneTxt" data-bind="value: model.PhoneNumber" aria-required="true" type="text" title="Phone Number" required />
+                    <input id="phoneTxt" data-bind="value: person.phoneNumber" aria-required="true" type="text" title="Phone Number" required />
                 </div>
                 <div>
                     <label for="price">Province</label>
-                    <select id="provinceDdl" data-bind="options: provinces, optionsText: 'Name', value: model.Province, optionsCaption: 'Choose...'" aria-required="true" required></select>
+                    <select id="provinceDdl" data-bind="options: provinces, optionsText: 'Name', value: person.province, optionsCaption: 'Choose...'" aria-required="true" required></select>
                 </div>
                 <br />
                 <div>
@@ -80,12 +79,5 @@
 <footer>
     @using System.Web.Optimization
     @Scripts.RenderFormat("<script src='{0}' defer=\"defer\"></script>", "~/bundles/ejemplo")
-    <script type="text/javascript">
-        $(document).ready(function () {
-            'use strict';
-            var vm = new PersonViewModel();
-            ko.applyBindings(vm, document.getElementById('mainContainer'));
-        });
-    </script>
 </footer>
 
